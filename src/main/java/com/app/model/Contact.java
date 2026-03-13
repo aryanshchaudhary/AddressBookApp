@@ -1,10 +1,14 @@
 package com.app.model;
-import java.util.*;
+
 public class Contact {
-	public static void main(String[] args) {
-		Scanner sc = new Scanner(System.in);
-		System.out.print("Enter value : ");
-		String input = sc.nextLine();
-		sc.close();
-	}
+	
+	public String firstName;
+    public String lastName;
+    public String address;
+    public String city;
+    public String state;
+    public String zip;
+    public String phoneNumber;
+    public String email;
+    
 }
