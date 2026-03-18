@@ -1,6 +1,7 @@
 package com.app.manager;
 
-import java.util.*;
+import java.util.Scanner;
+import java.util.stream.*;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -66,5 +67,31 @@ public class AddressBookManager {
             	 System.out.println("Invalid Choice");
 			}
 		}
+	}
+	
+	// UC8 
+	public void searchByCity() {
+
+	    System.out.println("Enter City:");
+	    String city = sc.nextLine();
+
+	    addressBookMap.values().stream()
+	        .flatMap(addressBook -> addressBook.getContactList().stream())
+	        .filter(person -> person.city.equals(city))
+	        .forEach(person -> {
+	            System.out.println(person.firstName + " " + person.lastName + " - " + person.city);
+	        });
+	}
+	
+	public void searchByState() {
+		System.out.println("Enter State: ");
+		String state = sc.nextLine();
+		
+		addressBookMap.values().stream()
+		.flatMap(addressBook -> addressBook.getContactList().stream())
+		.filter(person -> person.state.equals(state))
+		.forEach(person -> {
+			System.out.println(person.firstName + " " + person.lastName + " " + person.state);
+		});
 	}
 }
