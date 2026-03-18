@@ -19,6 +19,12 @@ public class AddressBook {
 
 		System.out.println("Enter Last Name:");
 		person.lastName = sc.nextLine();
+		
+		//UC7 Duplicate Check
+		if(contactList.contains(person)) {
+			System.out.println("Duplicate Contact! Cannot Add.");
+			return;
+		}
 
 		System.out.println("Enter Address:");
 		person.address = sc.nextLine();
