@@ -160,4 +160,21 @@ public class AddressBookManager {
 	        System.out.println(person.firstName + " " + person.lastName)
 	    );
 	}
+	
+	//UC 10
+	public void countByCity() {
+		buildMaps();
+		
+		cityMap.forEach((city, list) -> {
+			System.out.println(city + " : " + list.size());
+		});
+	}
+	
+	public void countByState() {
+		buildMaps();
+		
+		stateMap.forEach((state, list) -> {
+			System.out.println(state + " :" + list.size());
+		});
+	}
 }
