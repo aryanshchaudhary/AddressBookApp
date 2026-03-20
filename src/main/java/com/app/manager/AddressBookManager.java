@@ -1,15 +1,23 @@
 package com.app.manager;
 
 import java.util.Scanner;
-import java.util.stream.*;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.List;
+
+import com.app.model.Contact;
 
 import com.app.service.AddressBook;
 
 public class AddressBookManager {
 
 	Map<String, AddressBook> addressBookMap = new HashMap<>();
+	
+	//UC 9
+	Map<String, List<Contact>> cityMap = new HashMap<>();
+	Map<String, List<Contact>> stateMap = new HashMap<>();
+	
 	Scanner sc = new Scanner(System.in);
 
 	// Add New Address Book
@@ -93,5 +101,63 @@ public class AddressBookManager {
 		.forEach(person -> {
 			System.out.println(person.firstName + " " + person.lastName + " " + person.state);
 		});
+	}
+	
+	//UC 9
+	public void buildMaps() {
+
+	    cityMap.clear();
+	    stateMap.clear();
+
+	    addressBookMap.values().stream()
+	        .flatMap(addressBook -> addressBook.getContactList().stream())
+	        .forEach(person -> {
+
+	            cityMap
+	                .computeIfAbsent(person.city, k -> new ArrayList<>())
+	                .add(person);
+
+	            stateMap
+	                .computeIfAbsent(person.state, k -> new ArrayList<>())
+	                .add(person);
+	        });
+	}
+	
+	public void viewByCity() {
+
+	    buildMaps();
+
+	    System.out.println("Enter City:");
+	    String city = sc.nextLine();
+
+	    List<Contact> list = cityMap.get(city);
+
+	    if (list == null) {
+	        System.out.println("No contacts found");
+	        return;
+	    }
+
+	    list.forEach(person ->
+	        System.out.println(person.firstName + " " + person.lastName)
+	    );
+	}
+	
+	public void viewByState() {
+
+	    buildMaps();
+
+	    System.out.println("Enter State:");
+	    String state = sc.nextLine();
+
+	    List<Contact> list = stateMap.get(state);
+
+	    if (list == null) {
+	        System.out.println("No contacts found");
+	        return;
+	    }
+
+	    list.forEach(person ->
+	        System.out.println(person.firstName + " " + person.lastName)
+	    );
 	}
 }

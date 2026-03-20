@@ -21,7 +21,9 @@ public class AddressBookAppApplication {
 			System.out.println("2 Select Address Book");
 			System.out.println("3 Search by City");
 			System.out.println("4 Search by State");
-			System.out.println("5 Exit");
+			System.out.println("5 View by City");
+			System.out.println("6 View by State");
+			System.out.println("7 Exit");
 			
 			int choice = sc.nextInt();
 			sc.nextLine();
@@ -42,8 +44,16 @@ public class AddressBookAppApplication {
 			case 4:
 				manager.searchByState();
 				break;
-
+				
 			case 5:
+				manager.viewByCity();
+				break;
+				
+			case 6:
+				manager.viewByState();
+				break;
+
+			case 7:
 				System.out.println("Exiting...");
 				System.exit(0);
 				
