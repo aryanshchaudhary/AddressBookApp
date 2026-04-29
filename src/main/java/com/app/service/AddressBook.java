@@ -110,4 +110,9 @@ public class AddressBook {
             System.out.println("Email: " + person.email);
 		}
 	}
+	
+	// UC8
+	public List<Contact> getContactList() {
+	    return contactList;
+	}
 }
