@@ -10,7 +10,7 @@ public class AddressBook {
 	List<Contact> contactList = new ArrayList<>();
 	Scanner sc = new Scanner(System.in);
 
-	// UC 2 Add Contact
+	// UC 2 & UC 5 Add Contact
 	public void addContact() {
 		Contact person = new Contact();
 
@@ -89,5 +89,19 @@ public class AddressBook {
 			}
 		}
 		System.out.println("Contact not found");
+	}
+	
+	//Display Contacts
+	public void displayContacts() {
+		for(Contact person : contactList) {
+			System.out.println("\nFirst Name: " + person.firstName);
+            System.out.println("Last Name: " + person.lastName);
+            System.out.println("Address: " + person.address);
+            System.out.println("City: " + person.city);
+            System.out.println("State: " + person.state);
+            System.out.println("Zip: " + person.zip);
+            System.out.println("Phone: " + person.phoneNumber);
+            System.out.println("Email: " + person.email);
+		}
 	}
 }
